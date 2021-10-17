@@ -9,6 +9,3 @@ def area_of_circle(diameter):
     else:
         radius = diameter / 2
         return pi * radius ** 2
-
-
-print(area_of_circle(10))
