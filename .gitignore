@@ -1,2 +1,6 @@
 .DS_Store
 .vscode/
+.python-version
+__pycache__/
+.pytest_cache
+venv
