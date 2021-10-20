@@ -23,10 +23,10 @@ def verify(index):
         print("Target not found")
 
 
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-result = binary_search(numbers, 12)
+some_list = sorted(["Apple", "blueberry", "Banana", "Strawberry", "peach", "Apricot"])
+print(some_list)
+result = binary_search(some_list, "apricot")
 verify(result)
 
-result = binary_search(numbers, 10)
+result = binary_search(some_list, "Apricot")
 verify(result)
