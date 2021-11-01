@@ -31,8 +31,24 @@ class Pizza:
         return self.diameter / 2
 
     def __str__(self):
-        return f'{self.diameter}" round pizza'
+        return f'{self.diameter}" round pizza with {self.toppings if self.toppings else "No topping"}'
+
+    def add_topping(self, topping):
+        if isinstance(topping, str):
+            self.toppings.append(topping)
+        elif isinstance(topping, (list, tuple)):
+            self.toppings.extend(topping)
+
+    @property
+    def toppings(self):
+        if not hasattr(self, "_toppings"):
+            self._toppings = []
+        return self._toppings
 
 
 pizza = Pizza(16)
+print(f"A {pizza} will cost ${pizza.price:.2f}")
+pizza.add_topping("cheese")
+print(f"A {pizza} will cost ${pizza.price:.2f}")
+pizza.add_topping(["Tomato", "Olives"])
 print(f"A {pizza} will cost ${pizza.price:.2f}")
