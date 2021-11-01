@@ -2,6 +2,27 @@ from math import pi
 
 
 class Pizza:
+    @property
+    def price(self):
+        return 5.00 + 0.05 * self.area + 0.50 * len(self.toppings)
+
+    def add_topping(self, topping):
+        if isinstance(topping, str):
+            self.toppings.append(topping)
+        elif isinstance(topping, (list, tuple)):
+            self.toppings.extend(topping)
+
+    @property
+    def toppings(self):
+        if not hasattr(self, "_toppings"):
+            self._toppings = []
+        return self._toppings
+
+    def __str__(self):
+        return f'{self.toppings if self.toppings else "no toppings"}'
+
+
+class RoundPizza(Pizza):
     def __init__(self, diameter):
         self.diameter = diameter
 
@@ -19,10 +40,6 @@ class Pizza:
             self._diameter = diameter
 
     @property
-    def price(self):
-        return 5.00 + 0.05 * self.area
-
-    @property
     def area(self):
         return pi * self.radius ** 2
 
@@ -31,19 +48,7 @@ class Pizza:
         return self.diameter / 2
 
     def __str__(self):
-        return f'{self.diameter}" round pizza with {self.toppings if self.toppings else "No topping"}'
-
-    def add_topping(self, topping):
-        if isinstance(topping, str):
-            self.toppings.append(topping)
-        elif isinstance(topping, (list, tuple)):
-            self.toppings.extend(topping)
-
-    @property
-    def toppings(self):
-        if not hasattr(self, "_toppings"):
-            self._toppings = []
-        return self._toppings
+        return f'{self.diameter}" round pizza with {super().__str__()}'
 
 
 pizza = Pizza(16)
