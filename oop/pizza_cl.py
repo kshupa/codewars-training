@@ -51,7 +51,7 @@ class RoundPizza(Pizza):
         return f'{self.diameter}" round pizza with {super().__str__()}'
 
 
-pizza = Pizza(16)
+pizza = RoundPizza(16)
 print(f"A {pizza} will cost ${pizza.price:.2f}")
 pizza.add_topping("cheese")
 print(f"A {pizza} will cost ${pizza.price:.2f}")
