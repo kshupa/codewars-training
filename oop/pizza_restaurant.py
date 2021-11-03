@@ -76,17 +76,28 @@ class SquarePizza(Pizza):
         return f"{self.length} length pizza with {super().__str__()}"
 
 
-pizza = RoundPizza(16)
-print(f"A {pizza} will cost ${pizza.price:.2f}")
-pizza.add_topping("cheese")
-print(f"A {pizza} will cost ${pizza.price:.2f}")
-pizza.add_topping(["Tomato", "Olives"])
-print(f"A {pizza} will cost ${pizza.price:.2f}")
+class Coke:
+    def __init__(self, ounces):
+        self.ounces = ounces
+
+    @property
+    def price(self):
+        return 1.00 + 0.02 * self.ounces
+
+    def __str__(self):
+        return f"{self.ounces}oz Coke"
 
 
-pizza = SquarePizza(20)
-print(f"A {pizza} will cost ${pizza.price:.2f}")
-pizza.add_topping("cheese")
-print(f"A {pizza} will cost ${pizza.price:.2f}")
-pizza.add_topping(["Tomato", "Olives"])
-print(f"A {pizza} will cost ${pizza.price:.2f}")
+pizza1 = RoundPizza(16)
+pizza1.add_topping("cheese")
+
+pizza2 = SquarePizza(20)
+pizza2.add_topping("Tomatoes")
+
+order = (pizza1, pizza2, Coke(20))
+
+for item in order:
+    print(f"A {item} will cost ${item.price:.2f}")
+else:
+    total_price = sum(item.price for item in order)
+    print(f"A total order will cost ${total_price:.2f}")
