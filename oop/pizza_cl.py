@@ -51,7 +51,40 @@ class RoundPizza(Pizza):
         return f'{self.diameter}" round pizza with {super().__str__()}'
 
 
+class SquarePizza(Pizza):
+    def __init__(self, length):
+        self.length = length
+
+    @property
+    def length(self):
+        return self._length
+
+    @length.setter
+    def length(self, length):
+        if not isinstance(length, (int, float)):
+            raise TypeError("The length must be integer or float.")
+        elif length < 0:
+            raise ValueError("The length must not be negative.")
+        else:
+            self._length = length
+
+    @property
+    def area(self):
+        return self.length ** 2
+
+    def __str__(self):
+        return f"{self.length} length pizza with {super().__str__()}"
+
+
 pizza = RoundPizza(16)
+print(f"A {pizza} will cost ${pizza.price:.2f}")
+pizza.add_topping("cheese")
+print(f"A {pizza} will cost ${pizza.price:.2f}")
+pizza.add_topping(["Tomato", "Olives"])
+print(f"A {pizza} will cost ${pizza.price:.2f}")
+
+
+pizza = SquarePizza(20)
 print(f"A {pizza} will cost ${pizza.price:.2f}")
 pizza.add_topping("cheese")
 print(f"A {pizza} will cost ${pizza.price:.2f}")
