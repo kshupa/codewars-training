@@ -88,13 +88,30 @@ class Coke:
         return f"{self.ounces}oz Coke"
 
 
+class Salad:
+    def __init__(self, plate_size):
+        self.plate_size = plate_size
+
+    @property
+    def price(self):
+        if self.plate_size == "small":
+            return 5
+        if self.plate_size == "medium":
+            return 8
+        if self.plate_size == "large":
+            return 10
+
+    def __str__(self):
+        return f'{self.plate_size} size salad'
+
+
 pizza1 = RoundPizza(16)
 pizza1.add_topping("cheese")
 
 pizza2 = SquarePizza(20)
 pizza2.add_topping("Tomatoes")
 
-order = (pizza1, pizza2, Coke(20))
+order = (pizza1, pizza2, Coke(20), Salad('large'))
 
 for item in order:
     print(f"A {item} will cost ${item.price:.2f}")
