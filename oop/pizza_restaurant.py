@@ -102,7 +102,7 @@ class Salad:
             return 10
 
     def __str__(self):
-        return f'{self.plate_size} size salad'
+        return f"{self.plate_size} size salad"
 
 
 pizza1 = RoundPizza(16)
@@ -111,7 +111,7 @@ pizza1.add_topping("cheese")
 pizza2 = SquarePizza(20)
 pizza2.add_topping("Tomatoes")
 
-order = (pizza1, pizza2, Coke(20), Salad('large'))
+order = (pizza1, pizza2, Coke(20), Salad("large"))
 
 for item in order:
     print(f"A {item} will cost ${item.price:.2f}")
